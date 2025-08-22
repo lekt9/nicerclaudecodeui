@@ -57,6 +57,39 @@ export default {
       spacing: {
         'safe-area-inset-bottom': 'env(safe-area-inset-bottom)',
       },
+      fontFamily: {
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['"SF Mono"', 'Monaco', '"Cascadia Code"', '"Roboto Mono"', 'Consolas', '"Courier New"', 'monospace'],
+      },
+      animation: {
+        "fade-in": "fadeIn 0.2s ease-out",
+        "slide-in-from-top": "slideInFromTop 0.3s ease-out",
+        "slide-in-from-bottom": "slideInFromBottom 0.3s ease-out",
+        "slide-in-from-left": "slideInFromLeft 0.3s ease-out",
+        "slide-in-from-right": "slideInFromRight 0.3s ease-out",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0", transform: "translateY(4px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInFromTop: {
+          "0%": { opacity: "0", transform: "translateY(-10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInFromBottom: {
+          "0%": { opacity: "0", transform: "translateY(10px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        slideInFromLeft: {
+          "0%": { opacity: "0", transform: "translateX(-10px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+        slideInFromRight: {
+          "0%": { opacity: "0", transform: "translateX(10px)" },
+          "100%": { opacity: "1", transform: "translateX(0)" },
+        },
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
