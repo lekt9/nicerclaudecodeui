@@ -4,7 +4,7 @@
 </div>
 
 
-A desktop and mobile UI for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), and [Cursor CLI](https://docs.cursor.com/en/cli/overview). You can use it locally or remotely to view your active projects and sessions in Claude Code or Cursor and make changes to them from everywhere (mobile or desktop). This gives you a proper interface that works everywhere. Supports models including **Claude Sonnet 4**, **Opus 4.1**, and **GPT-5**
+A **desktop application** for [Claude Code](https://docs.anthropic.com/en/docs/claude-code), and [Cursor CLI](https://docs.cursor.com/en/cli/overview). Built with Electron, it provides a native desktop experience with embedded backend services. This gives you a standalone application that works without any external server. Supports models including **Claude Sonnet 4**, **Opus 4.1**, and **GPT-5**
 
 ## Screenshots
 
@@ -58,7 +58,7 @@ A desktop and mobile UI for [Claude Code](https://docs.anthropic.com/en/docs/cla
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) installed and configured, and/or
 - [Cursor CLI](https://docs.cursor.com/en/cli/overview) installed and configured
 
-### Installation
+### Development
 
 1. **Clone the repository:**
 ```bash
@@ -71,22 +71,24 @@ cd claudecodeui
 npm install
 ```
 
-3. **Configure environment:**
+3. **Start in development mode:**
 ```bash
-cp .env.example .env
-# Edit .env with your preferred settings
+# Start Electron app in development mode
+npm run electron:dev
 ```
 
-4. **Start the application:**
+### Building for Production
+
 ```bash
-# Development mode (with hot reload)
-npm run dev
+# Build for current platform
+npm run dist
 
+# Build for specific platforms
+npm run dist:win    # Windows
+npm run dist:mac    # macOS  
+npm run dist:linux  # Linux
 ```
-The application will start at the port you specified in your .env
 
-5. **Open your browser:**
-   - Development: `http://localhost:3001`
 
 ## Security & Tools Configuration
 

@@ -317,6 +317,11 @@ function Shell({ selectedProject, selectedSession, isActive }) {
       }
       
       let wsBaseUrl;
+      
+      // Handle Electron environment
+      if (window.electronAPI?.isElectron) {
+        wsBaseUrl = 'ws://127.0.0.1:3001';
+      } else {
       try {
         const configResponse = await fetch('/api/config', {
           headers: { 'Authorization': `Bearer ${token}` }
@@ -333,6 +338,7 @@ function Shell({ selectedProject, selectedSession, isActive }) {
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
         const apiPort = window.location.port === '3001' ? '3002' : window.location.port;
         wsBaseUrl = `${protocol}//${window.location.hostname}:${apiPort}`;
+      }
       }
       
       const wsUrl = `${wsBaseUrl}/shell?token=${encodeURIComponent(token)}`;

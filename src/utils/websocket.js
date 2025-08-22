@@ -28,8 +28,13 @@ export function useWebSocket() {
         return;
       }
       
-      // Fetch server configuration to get the correct WebSocket URL
       let wsBaseUrl;
+      
+      // Handle Electron environment
+      if (window.electronAPI?.isElectron) {
+        wsBaseUrl = 'ws://127.0.0.1:3001';
+      } else {
+      // Fetch server configuration to get the correct WebSocket URL
       try {
         const configResponse = await fetch('/api/config', {
           headers: {
@@ -53,6 +58,7 @@ export function useWebSocket() {
         // For development, API server is typically on port 3002 when Vite is on 3001
         const apiPort = window.location.port === '3001' ? '3002' : window.location.port;
         wsBaseUrl = `${protocol}//${window.location.hostname}:${apiPort}`;
+      }
       }
       
       // Include token in WebSocket URL as query parameter

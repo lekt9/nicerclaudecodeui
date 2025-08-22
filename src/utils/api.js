@@ -9,8 +9,12 @@ export const authenticatedFetch = (url, options = {}) => {
   if (token) {
     defaultHeaders['Authorization'] = `Bearer ${token}`;
   }
+
+  // Handle Electron environment
+  const baseUrl = window.electronAPI?.isElectron ? 'http://127.0.0.1:3001' : '';
+  const fullUrl = baseUrl + url;
   
-  return fetch(url, {
+  return fetch(fullUrl, {
     ...options,
     headers: {
       ...defaultHeaders,

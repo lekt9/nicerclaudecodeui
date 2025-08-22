@@ -1,6 +1,10 @@
 # Dependencies
 node_modules/
 npm-debug.log*
+# Electron build outputs
+dist-electron/
+release/
+
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
